@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Care/Desktop/Work/Dearhive/Testproject_cjs",
-      "program": "c:/Users/Care/Desktop/Work/Dearhive/Testproject_cjs/build/Debug/outDebug",
+      "cwd": "c:/Users/Care/Desktop/Work/Dearhive/Testproject_cjs/node_modules/curtainjs",
+      "program": "c:/Users/Care/Desktop/Work/Dearhive/Testproject_cjs/node_modules/curtainjs/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
