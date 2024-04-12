@@ -12,11 +12,7 @@
         <!-- div used to create our plane -->
         <div class="plane">
         <!-- image that will be used as texture by our plane -->
-        
-<h1>The video element</h1>
-<video width="640" height="360" controls> 
-    <source src="IMG_0.MOV" type="video/mp4">
-  </video>
+        <img src="image1.JPG" crossorigin="" />
         </div>
         <script type="module">
             import {Curtains, Plane} from "https://cdn.jsdelivr.net/npm/curtainsjs@7.2.0/src/index.mjs";
@@ -63,11 +59,15 @@ uniform mat4 uTextureMatrix0;
 // pass your vertex and texture coords to the fragment shader
 varying vec3 vVertexPosition;
 varying vec2 vTextureCoord;
+varying vec2 vOriginalTextureCoord;
 void main() {
 vec3 vertexPosition = aVertexPosition;
-gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
+vertexPosition.z = sin(vertexPosition.x * 3.141592 + uTime * 0.0375) * 0.05;
+// using About the plane's attributes : aVertexPosition and aTextureCoord
+gl_Position = uPMatrix * uMVMatrix * vec4(<a href=""></a>vertexPosition, 1.0);
 // set the varyings
 // here we use our texture matrix to calculate the accurate texture coords
+vOriginalTextureCoord = aTextureCoord;
 vTextureCoord = (uTextureMatrix0 * vec4(aTextureCoord, 0.0, 1.0)).xy;
 vVertexPosition = vertexPosition;
 }
@@ -87,9 +87,11 @@ void main() {
 vec2 textureCoord = vTextureCoord;
 // displace our pixels along the X axis based on our time uniform
 // textures coords are ranging from 0.0 to 1.0 on both axis
-textureCoord.x += sin(textureCoord.y * 25.0) * cos(textureCoord.x * 25.0) * (cos(uTime / 50.0)) / 25.0;
+textureCoord.x += sin(textureCoord.y * 15.0) * cos(textureCoord.x * 200.0) * (cos(uTime / 50.0)) / 25.0;
 // map our texture with the texture matrix coords
-gl_FragColor = texture2D(uSampler0, textureCoord);
+//gl_FragColor = texture2D(uSampler0, textureCoord);
+gl_FragColor = vec4(vec3(vTextureCoord.y), 1.0);
+vec2 st = gl_FragCoord.xy/uResolution.xy;
 }
  </script>
 </body>
