@@ -12,7 +12,7 @@
         <!-- div used to create our plane -->
         <div class="plane">
         <!-- image that will be used as texture by our plane -->
-        <img src="image1.JPG" crossorigin="" />
+        <img src="image2.JPG" crossorigin="" />
         </div>
         <script type="module">
             import {Curtains, Plane} from "https://cdn.jsdelivr.net/npm/curtainsjs@7.2.0/src/index.mjs";
@@ -64,7 +64,7 @@ vec3 vertexPosition = aVertexPosition;
 gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
 // set the varyings
 // here we use our texture matrix to calculate the accurate texture coords
-vTextureCoord = (uTextureMatrix0 * vec4(aTextureCoord, 0.0, 1.0)).xy;
+vTextureCoord = (uTextureMatrix0* vec4(aTextureCoord, 0.0, 1.0)).xy;
 vVertexPosition = vertexPosition;
 }
 </script>
@@ -83,7 +83,7 @@ void main() {
 vec2 textureCoord = vTextureCoord;
 // displace our pixels along the X axis based on our time uniform
 // textures coords are ranging from 0.0 to 1.0 on both axis
-textureCoord.x += sin(textureCoord.y * 25.0) * cos(textureCoord.x * 25.0) * (cos(uTime / 50.0)) / 25.0;
+textureCoord.y += sin(textureCoord.y * 15.0) * cos(textureCoord.x * 25.0) * (cos(uTime / 50.0)) / 25.0;
 // map our texture with the texture matrix coords
 gl_FragColor = texture2D(uSampler0, textureCoord);
 }

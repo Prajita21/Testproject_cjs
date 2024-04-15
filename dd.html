@@ -91,7 +91,7 @@ textureCoord.x += sin(textureCoord.y * 15.0) * cos(textureCoord.x * 200.0) * (co
 // map our texture with the texture matrix coords
 //gl_FragColor = texture2D(uSampler0, textureCoord);
 gl_FragColor = vec4(vec3(vTextureCoord.y), 1.0);
-vec2 st = gl_FragCoord.xy/uResolution.xy;
+//vec2 st = gl_FragCoord.xy/uResolution.xy;
 }
  </script>
 </body>
